@@ -1,0 +1,83 @@
+/* НЕ обрезать изображения в карточках */
+.card-media{
+  position:relative;
+  height:260px;              /* фикс. высота для ровной сетки */
+  background:#0a0a0a;        /* черный фон под "письма" по краям */
+  display:grid; place-items:center;
+  overflow:hidden; border-radius:var(--radius);
+}
+.card-media img{
+  width:100%; height:100%;
+  object-fit:contain;         /* показывать целиком */
+  object-position:center;
+}
+
+/* Hero — показывать целиком, без кропа */
+.hero-media img{
+  width:100%; height:100%;
+  object-fit:contain;         /* не кропать */
+  object-position:center;
+  animation:kenburns 36s ease-in-out infinite alternate; /* оставь/убери по желанию */
+}
+
+/* About — тоже без кропа */
+.about-img{ height:70vh; overflow:hidden; }
+.about-img img{
+  width:100%; height:100%;
+  object-fit:contain;         /* не обрезать ателье */
+  object-position:center;
+}
+
+/* Если нужно акцентировать верхнюю часть кадра (лицо/детали) */
+.img-top{ object-position: top center; }
+
+/* Применение: <img class="img-top" ...> */
+/* Lookbook Grid */
+.lookbook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.lookbook-item {
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 0, 51, 0.15);
+}
+
+.lookbook-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--red-border);
+}
+
+.lookbook-image {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+
+.lookbook-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.lookbook-item:hover .lookbook-image img {
+  transform: scale(1.08);
+}
+
+.lookbook-caption {
+  padding: 16px;
+  text-align: center;
+  background: var(--surface-3);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+  border-top: 1px solid rgba(255, 0, 51, 0.1);
+}
